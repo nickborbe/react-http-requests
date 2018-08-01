@@ -4,7 +4,9 @@ class App extends Component {
   render () {
     return (
       <div className='button__container'>
-        <button className='button'>Click Me</button>
+        <button className='button' onClick={this.handleClick}>
+        Click Me
+        </button>
       </div>
     )
   }
