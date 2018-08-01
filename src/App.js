@@ -5,6 +5,7 @@ class App extends Component {
     super()
     this.handleClick = this.handleClick.bind(this);
   }
+  //
 
   handleClick(){
     console.log("hello");
@@ -15,6 +16,8 @@ class App extends Component {
     return (
       <div className='button__container'>
         <button className='button' onClick={this.handleClick}>
+        {/* why is it better to do .bind in the constructor instead of this thing below? */}
+        {/* <button className='button' onClick={()=>this.handleClick()}> */}
         Click Me
         </button>
       </div>
