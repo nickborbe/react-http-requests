@@ -3,16 +3,18 @@ import './App.css'
 import axios from 'axios'
 
 class App extends Component {
-  // constructor(){
-  //   super()
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
+  constructor(props){
+    super(props)
+    // this.handleClick = this.handleClick.bind(this);
+    this.state = {username: null}
+  }
   // why do this whole .bind thing instead of just calling it differently in the view?
 
   handleClick(){
     axios.get('https://api.github.com/users/nickborbe')
     .then((res) => {
-      console.log(res)
+      console.log(res.data)
+      this.setState({username: res.data.name})
     });
     
   }
@@ -26,6 +28,7 @@ class App extends Component {
         <button className='button' onClick={()=>this.handleClick()}>
         Click Me
         </button>
+        <p>{this.state.username}</p>
       </div>
     )
   }
