@@ -94,7 +94,7 @@ class App extends Component {
     this.handleClick()
     
     return (
-    this.state.tasks.map(function(task, index){
+    this.state.tasks.reverse().map(function(task, index){
       return(
         <div key={index}>
         <h3>{task.title}</h3>
