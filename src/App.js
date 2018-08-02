@@ -123,7 +123,7 @@ class App extends Component {
         Get List Of Tasks
         </button>
             <ul>
-                {()=>setInterval(()=>this.showTasks(),3000)}
+                {setInterval(()=>this.showTasks(),3000)}
             </ul>
 
       </div>
