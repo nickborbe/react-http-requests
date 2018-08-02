@@ -7,21 +7,21 @@ class App extends Component {
     super(props)
     // this.handleClick = this.handleClick.bind(this);
     this.state = {
-      username: null,
+      tasks: [],
       urlToSend: '',
     }
   }
   // why do this whole .bind thing instead of just calling it differently in the view?
 
-  theURL = ''
+
   
 
   handleClick(){
-    axios.get('https://api.github.com/users/nickborbe')
+    axios.get(this.state.urlToSend)
     .then((res) => {
       console.log(res.data)
-      console.log(this.theURL)
-      this.setState({username: res.data.name})
+      console.log(this.state.urlToSend)
+      this.setState({tasks: res.data})
     }); 
   }
 
@@ -31,6 +31,19 @@ class App extends Component {
       urlToSend: e.target.value,
     })
 
+  }
+
+  showTasks(){
+    let result = ''
+    this.state.tasks.forEach((eachTask)=>{  
+       result +=  <h3> eachTask.title </h3>
+       result += <p> eachTask.description </p>
+    })
+    return (
+      <div>
+        {result}
+        </div>
+    )
   }
 
 
@@ -45,7 +58,7 @@ class App extends Component {
         <button className='button' onClick={()=>this.handleClick()}>
         Click Me
         </button>
-        <p>{this.state.username}</p>
+        {this.showTasks()}
       </div>
     )
   }
