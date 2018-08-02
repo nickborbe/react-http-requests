@@ -25,18 +25,10 @@ class AddTask extends Component {
       })
     }
 
-    showTasks(){
-      this.props.showTasks();
-    }
-
-
-
-
     submitNewTask(){
       axios.post('http://localhost:5000/api/tasks/create',{title: this.state.titleInput, description: this.state.descInput})
       .then((res)=>{
         this.setState({titleInput: '', descInput: ''})
-        this.showTasks()
         console.log(res);
       })
       .catch((err)=>{
@@ -99,10 +91,11 @@ class App extends Component {
   }
 
   showTasks(){
+    const that = this;
     axios.get('http://localhost:5000/api/tasks')
     .then((res) => {
       console.log(res.data)
-      this.setState({tasks: res.data})
+      that.setState({tasks: res.data})
     }); 
     
     return (
@@ -122,7 +115,7 @@ class App extends Component {
     return (
       <div className='button__container'>
               <div className="right">
-        <AddTask showTasks = {this.showTasks}></AddTask>
+        <AddTask></AddTask>
         </div>
       <input value ={this.state.urlToSend} onChange={e => this.updateUrlToSend(e)}>
       </input>
