@@ -91,12 +91,7 @@ class App extends Component {
   }
 
   showTasks(){
-    const that = this;
-    axios.get('http://localhost:5000/api/tasks')
-    .then((res) => {
-      console.log(res.data)
-      that.setState({tasks: res.data})
-    }); 
+    this.handleClick()
     
     return (
     this.state.tasks.map(function(task, index){
