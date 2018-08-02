@@ -91,18 +91,20 @@ class App extends Component {
   }
 
   showTasks(){
-    this.handleClick()
-    
-    return (
-    this.state.tasks.reverse().map(function(task, index){
-      return(
-        <div key={index}>
-        <h3>{task.title}</h3>
-        <p >{task.description} </p>
-        </div>
-      ) 
-    })
-  )
+
+      this.handleClick()
+  
+          
+          return (
+            this.state.tasks.reverse().map(function(task, index){
+              return(
+                <div key={index}>
+            <h3>{task.title}</h3>
+            <p >{task.description} </p>
+            </div>
+          ) 
+        })
+      )
   }
 
 
@@ -121,7 +123,9 @@ class App extends Component {
         Get List Of Tasks
         </button>
             <ul>
-                {this.showTasks()}
+                {setInterval(()=>{
+                  this.showTasks()
+                },3000)   }
             </ul>
 
       </div>
