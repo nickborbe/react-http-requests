@@ -92,7 +92,7 @@ class App extends Component {
 
   showTasks(){
 
-      this.handleClick()
+      // this.handleClick()
   
           
           return (
@@ -123,7 +123,7 @@ class App extends Component {
         Get List Of Tasks
         </button>
             <ul>
-                {setInterval(()=>this.showTasks(),3000)}
+                {this.showTasks()}
             </ul>
 
       </div>
